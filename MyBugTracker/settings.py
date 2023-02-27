@@ -127,3 +127,6 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#https://stackoverflow.com/questions/73899314/how-to-redirect-an-admin-user-to-redirect-to-the-index-page-after-logout-from-th
+LOGOUT_REDIRECT_URL = '/Buglist/index'

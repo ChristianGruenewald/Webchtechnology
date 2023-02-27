@@ -5,17 +5,13 @@
         <title>BugTracker</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-
         <link rel="shortcut icon" type="image/png" href="{% static 'icons8-bug-64.png' %}"/>
-
         <!-- Boostrab installation-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-        <!-- jquery for bootstrab-->
+        <!-- skripte für Bootstrab-->
         <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-
-        
 	</head>
 
     <body>
@@ -85,9 +81,6 @@
                    </tr> 
                 </thead> 
                 <tbody>
-                  <!--https://stackoverflow.com/questions/1070398/how-to-set-a-value-of-a-variable-inside-a-template-code--> 
-                {% with PRIOHOCH="HOCH"%}
-                {%endwith%}
                 {% for i in allBugs%}
                 <tr>
                     <td><a href="/Buglist/ChangeBug?id={{i.id}}">{{i.id}}</a></th>
