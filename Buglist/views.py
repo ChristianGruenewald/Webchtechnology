@@ -7,7 +7,6 @@
 from django.http import HttpResponseRedirect # Funktion um auf andere URL zu umzuleiten
 from django.shortcuts import render # Funktion um HTML dokument auszuwerten und darzustellen
 from .models import Bugs # ORM Modell für Bugs
-
 # Indexseite:
 def index(request, Changed=2, Delete=False):
     # Changed (int): 0-> Bug Änderung Fehlgeschlagen  1-> Bug Änderung Erfolgreich, 2-> Keine Änderung (standard wert)
@@ -35,6 +34,14 @@ def ChangeBug(request):
     ID=request.GET['id']
     selcted_Bug=Bugs.objects.get(id=ID) # Hole Bug mit gewählter ID 
     Prio=selcted_Bug.prio # Hole Prio aus Objekt 
+    state=selcted_Bug.status
+
+    stateOpen=""
+    stateNew=""
+    stateWork=""
+    stateCheck=""
+    stateClosed=""
+
     PrioHigh=""
     PrioMid=""
     PrioLow=""
@@ -47,7 +54,19 @@ def ChangeBug(request):
         PrioLow="Checked"
     # selected_Bug enhält ganzes Objekt auf Relation
     # PrioHigh, PrioMid, PrioLow enthalten Prio ergebnise aus If abfrage um Radio Button auf checked zu setzen.
-    return render(request, "Bug.html", {'SelctedBug':selcted_Bug, 'PrioHigh':PrioHigh, 'PrioMid':PrioMid, 'PrioLow':PrioLow})
+
+    if state=="Offen":
+        stateOpen="selected"
+    elif state=="Neu":
+        stateNew="selected"
+    elif state=="In Arbeit":
+        stateWork="selected"
+    elif state=="Bereit zur Prüfung":
+        stateCheck="selected"
+    else:
+        stateClosed="selected"
+
+    return render(request, "Bug.html", {'SelctedBug':selcted_Bug, 'PrioHigh':PrioHigh, 'PrioMid':PrioMid, 'PrioLow':PrioLow, 'stateOpen':stateOpen, 'stateNew':stateNew, 'stateWork':stateWork,'stateCheck':stateCheck , 'stateClosed':stateClosed})
 
 def ProcessChangedBug(request):
     id=request.GET['id']

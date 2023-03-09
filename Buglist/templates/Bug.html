@@ -87,11 +87,11 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Example select</label>
                 <select class="form-control" id="State" name="State">
-                  <option selected>Offen</option>
-                  <option>Neu</option>
-                  <option>In Arbeit</option>
-                  <option>Bereit zur Prüfung</option>
-                  <option>Geschlossen</option>
+                  <option {{stateOpen}}>Offen</option>
+                  <option {{stateNew}}>Neu</option>
+                  <option {{stateWork}}>In Arbeit</option>
+                  <option {{stateCheck}}>Bereit zur Prüfung</option>
+                  <option {{stateClosed}}>Geschlossen</option>
                 </select>
               </div>
 
