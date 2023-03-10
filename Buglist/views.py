@@ -7,6 +7,9 @@
 from django.http import HttpResponseRedirect # Funktion um auf andere URL zu umzuleiten
 from django.shortcuts import render # Funktion um HTML dokument auszuwerten und darzustellen
 from .models import Bugs # ORM Modell für Bugs
+def RedircetToIndex(request):
+    return HttpResponseRedirect('/Buglist/index')
+
 # Indexseite:
 def index(request, Changed=2, Delete=False):
     # Changed (int): 0-> Bug Änderung Fehlgeschlagen  1-> Bug Änderung Erfolgreich, 2-> Keine Änderung (standard wert)
